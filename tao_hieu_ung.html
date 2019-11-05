@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bài tập 1</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+        #draggable {
+            width: 150px;
+            height: 150px;
+            border: 1px solid black;
+            float: left;
+        }
+        #droppable {
+            width: 150px; height: 150px; padding: 0.5em; float: left; margin: 0 0 0 100px;
+            border: 1px solid black;
+        }
+        .droppable {
+            background-color: yellow;
+        }
+        .selection {
+            clear: both;
+            padding: 15px;
+        }
+        .selection ol li {
+            float: left;
+            width: 150px;
+            height: 35px;
+            margin: 15px 0 0 0;
+            border: 1px solid black;
+            list-style-type: none;
+            text-align: center;
+        }
+        #selectable, #sortable {
+        }
+        #selectable .ui-selecting { background: #FECA40; }
+        #selectable .ui-selected { background: #f31117; color: white; }
+        #accordion{
+            clear: both;
+            margin: 150px 0 0 0;
+        }
+        #dialog {
+        }
+    </style>
+    <script>
+        var availableTags = [
+            "ActionScript",
+            "AppleScript",
+            "Asp",
+            "BASIC",
+            "C",
+            "C++",
+            "Clojure",
+            "COBOL",
+            "ColdFusion",
+            "Erlang",
+            "Fortran",
+            "Groovy",
+            "Haskell",
+            "Java",
+            "JavaScript",
+            "Lisp",
+            "Perl",
+            "PHP",
+            "Python",
+            "Ruby",
+            "Scala",
+            "Scheme"
+        ];
+        $(function () {
+            $("#draggable").draggable();
+            $("#droppable").droppable({
+                drop:function (even , ui) {
+                    $(this).addClass("droppable").find("p").html("Dropped");
+                }
+            });
+            $("#droppable").resizable();
+            $("#selectable").selectable();
+            $("#sortable").sortable();
+            $("#accordion").accordion();
+            $( "#tags" ).autocomplete({
+                source: availableTags
+            });
+            $("#date").datepicker();
+            $("#dialog").dialog();
+            $("#slider").slider();
+        })
+    </script>
+</head>
+<body>
+<div id="draggable" >
+    <p>
+        Drag me around!
+    </p>
+</div>
+<div id="droppable">
+    <p>Drop here</p>
+</div>
+<div class="selection">
+    <ol  id="selectable">
+        <li >Item 1</li>
+        <li >Item 2</li>
+        <li >Item 3</li>
+        <li >Item 4</li>
+        <li >Item 5</li>
+        <li >Item 6</li>
+        <li >Item 7</li>
+    </ol>
+</div>
+<div class="selection" >
+    <ol id="sortable">
+        <li ><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 1</li>
+        <li ><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 2</li>
+        <li ><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 3</li>
+        <li ><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 4</li>
+        <li ><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 5</li>
+        <li ><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 6</li>
+        <li ><span class="ui-icon ui-icon-arrowthick-2-n-s"></span>Item 7</li>
+    </ol>
+</div>
+<div id="accordion">
+    <h3>Section 1</h3>
+    <div>
+        <p>
+            Hello this is select 1
+        </p>
+    </div>
+    <h3>Section 2</h3>
+    <div>
+        <p>
+            Hello this is select 2
+        </p>
+    </div>
+    <h3>Section 3</h3>
+    <div>
+        <p>
+            Hello this is select 3
+        </p>
+    </div>
+</div>
+<div>
+    <label for="tags">Tags: </label>
+    <input id="tags">
+</div>
+<div>
+    <label >date : </label>
+    <input id="date">
+</div>
+<div id="dialog" title="X đi khỏi muộn!">
+    <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+<div id="slider">
+
+</div>
+</body>
+</html>
